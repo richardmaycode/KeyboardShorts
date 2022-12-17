@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Category" representedClassName="Category" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="modified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <relationship name="cluster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cluster" inverseName="categories" inverseEntity="Cluster"/>
+        <relationship name="keybindings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Keybinding" inverseName="category" inverseEntity="Keybinding"/>
+    </entity>
+    <entity name="Cluster" representedClassName="Cluster" syncable="YES">
+        <attribute name="created" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isPersonal" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="modified" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <relationship name="categories" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Category" inverseName="cluster" inverseEntity="Category"/>
+        <relationship name="keybindings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Keybinding" inverseName="cluster" inverseEntity="Keybinding"/>
+    </entity>
+    <entity name="Key" representedClassName="Key" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="isCustom" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="isIcon" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="modified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="output" optional="YES" attributeType="String"/>
+        <relationship name="keybindings" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Keybinding" inverseName="keys" inverseEntity="Keybinding"/>
+    </entity>
+    <entity name="Keybinding" representedClassName="Keybinding" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="modified" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="summary" optional="YES" attributeType="String"/>
+        <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="keybindings" inverseEntity="Category"/>
+        <relationship name="cluster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cluster" inverseName="keybindings" inverseEntity="Cluster"/>
+        <relationship name="keys" toMany="YES" deletionRule="Nullify" destinationEntity="Key" inverseName="keybindings" inverseEntity="Key"/>
+    </entity>
+</model>
