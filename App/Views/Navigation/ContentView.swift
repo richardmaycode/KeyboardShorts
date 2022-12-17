@@ -16,7 +16,7 @@ struct ContentView: View {
             Sidebar(selection: $selection)
         } detail: {
             NavigationStack {
-                DetailView()
+                DetailView(selection: $selection)
             }
         }
 

@@ -8,13 +8,27 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    @Binding var selection: Panel?
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        switch selection ?? .all {
+        case .all: ClustersView(selection: $selection)
+            
+        case .favorites:
+            Text("Favs")
+        case .gallery:
+            Text("Gallery")
+        case .play:
+            Text("Play")
+        case .settings:
+            Text("Settings")
+        }
     }
 }
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(selection: .constant(.all))
     }
 }

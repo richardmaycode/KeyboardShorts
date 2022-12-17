@@ -51,9 +51,7 @@ struct Sidebar: View {
     var body: some View {
         List(selection: $selection) {
             ForEach(Panel.allCases) { panel in
-                NavigationLink {
-                    Text(panel.localizedName)
-                } label: {
+                NavigationLink(value: panel) {
                     Label(panel.localizedName, systemImage: panel.icon)
                 }
                 .tag(panel)
