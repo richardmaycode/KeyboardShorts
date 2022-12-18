@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ClustersView: View {
     
+    @Environment(\.managedObjectContext) private var viewContext
+    
     @FetchRequest(sortDescriptors: []) private var clusterResults: FetchedResults<Cluster>
     
     @State private var viewType: ViewType = .grid
@@ -17,6 +19,7 @@ struct ClustersView: View {
     
     @Binding var selection: Panel?
     
+    let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 8)
     
     var body: some View {
         VStack {
@@ -33,7 +36,12 @@ struct ClustersView: View {
         }
         .navigationTitle("All Clusters")
         .toolbar {
-            ToolbarItem(placement: .primaryAction) {
+            ToolbarItemGroup(placement: .primaryAction) {
+                Button(action: { presentingNewCluster = true }) {
+                    Label("Add Cluster", systemImage: KSSymbol.add)
+                        .labelStyle(.iconOnly)
+                }
+                
                 Picker("View Type", selection: $viewType) {
                     ForEach(ViewType.allCases) { viewType in
                         Image(systemName: viewType.image)
@@ -44,18 +52,44 @@ struct ClustersView: View {
             }
         }
         .sheet(isPresented: $presentingNewCluster) {
-            NewClusterView()
+            ClusterCreateView(onAdd: { name, summary, isPersonal in
+                presentingNewCluster = false
+                createCluster(name: name, summary: summary, isPersonal: isPersonal)
+            }, onCancel: { presentingNewCluster = false })
                 .embedInNavigationStack()
         }
         .searchable(text: $searchText)
     }
     
     var grid: some View {
-        Text("Grid View")
+        Group {
+            LazyVGrid(columns: columns) {
+                ForEach(clusterResults) { cluster in
+                    ClusterGridItem(cluster: cluster)
+                }
+            }
+            .padding(.top, 24)
+            
+            Spacer()
+        }
     }
     
     var list: some View {
-        Text("List View")
+        Table(clusterResults) {
+            TableColumn("Name", value: \.wrappedName)
+            TableColumn("Summary") { cluster in
+                Text(cluster.summary ?? "")
+            }
+            TableColumn("Custom Cluster") { cluster in
+                Text(cluster.isPersonal ? "Yes" : "No")
+            }
+            TableColumn("Created") { cluster in
+                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
+            }
+            TableColumn("Modified") { cluster in
+                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
+            }
+        }
     }
     
     var emptyResults: some View {
@@ -85,6 +119,19 @@ struct ClustersView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
+        }
+    }
+                           
+    func createCluster(name: String, summary: String, isPersonal: Bool) {
+        let cluster = Cluster(context: viewContext)
+        cluster.name = name
+        cluster.summary = summary
+        cluster.isPersonal = isPersonal
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

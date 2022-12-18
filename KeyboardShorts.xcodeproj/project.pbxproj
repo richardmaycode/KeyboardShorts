@@ -13,11 +13,13 @@
 		933D074C294DFD3D00C43D54 /* Key+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0744294DFD3D00C43D54 /* Key+CoreDataProperties.swift */; };
 		933D074D294DFD3D00C43D54 /* Keybinding+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0745294DFD3D00C43D54 /* Keybinding+CoreDataClass.swift */; };
 		933D074E294DFD3D00C43D54 /* Keybinding+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0746294DFD3D00C43D54 /* Keybinding+CoreDataProperties.swift */; };
+		934A3733294F793A003E7A0F /* ClusterGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A3732294F793A003E7A0F /* ClusterGridItem.swift */; };
+		934A3735294F7B18003E7A0F /* ClusterRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A3734294F7B18003E7A0F /* ClusterRowItem.swift */; };
 		938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */; };
 		938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */; };
 		93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB03294E21A1001D2A2C /* ClustersView.swift */; };
 		93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB05294E22F2001D2A2C /* ViewType.swift */; };
-		93FBDB08294E28F6001D2A2C /* NewClusterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB07294E28F6001D2A2C /* NewClusterView.swift */; };
+		93FBDB08294E28F6001D2A2C /* ClusterCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */; };
 		93FBDB0C294E2A4F001D2A2C /* View+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB0B294E2A4F001D2A2C /* View+Ext.swift */; };
 		93FBE45F294CDB2E0064EC19 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBE45E294CDB2E0064EC19 /* App.swift */; };
 		93FBE461294CDB2E0064EC19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBE460294CDB2E0064EC19 /* ContentView.swift */; };
@@ -40,11 +42,13 @@
 		933D0744294DFD3D00C43D54 /* Key+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Key+CoreDataProperties.swift"; path = "App/Models/Key+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		933D0745294DFD3D00C43D54 /* Keybinding+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Keybinding+CoreDataClass.swift"; path = "App/Models/Keybinding+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		933D0746294DFD3D00C43D54 /* Keybinding+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Keybinding+CoreDataProperties.swift"; path = "App/Models/Keybinding+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		934A3732294F793A003E7A0F /* ClusterGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterGridItem.swift; sourceTree = "<group>"; };
+		934A3734294F7B18003E7A0F /* ClusterRowItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterRowItem.swift; sourceTree = "<group>"; };
 		938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "App/Models/Category+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "App/Models/Category+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		93FBDB03294E21A1001D2A2C /* ClustersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustersView.swift; sourceTree = "<group>"; };
 		93FBDB05294E22F2001D2A2C /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
-		93FBDB07294E28F6001D2A2C /* NewClusterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewClusterView.swift; sourceTree = "<group>"; };
+		93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterCreateView.swift; sourceTree = "<group>"; };
 		93FBDB0B294E2A4F001D2A2C /* View+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Ext.swift"; sourceTree = "<group>"; };
 		93FBE45B294CDB2E0064EC19 /* KeyboardShorts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardShorts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FBE45E294CDB2E0064EC19 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
@@ -77,7 +81,9 @@
 			isa = PBXGroup;
 			children = (
 				93FBDB03294E21A1001D2A2C /* ClustersView.swift */,
-				93FBDB07294E28F6001D2A2C /* NewClusterView.swift */,
+				93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */,
+				934A3732294F793A003E7A0F /* ClusterGridItem.swift */,
+				934A3734294F7B18003E7A0F /* ClusterRowItem.swift */,
 			);
 			path = Clusters;
 			sourceTree = "<group>";
@@ -260,6 +266,7 @@
 				93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */,
 				93FBE479294CE2E50064EC19 /* KSStrings.swift in Sources */,
 				938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */,
+				934A3733294F793A003E7A0F /* ClusterGridItem.swift in Sources */,
 				933D0749294DFD3D00C43D54 /* Cluster+CoreDataClass.swift in Sources */,
 				93FBE461294CDB2E0064EC19 /* ContentView.swift in Sources */,
 				93FBE482294D010A0064EC19 /* DetailView.swift in Sources */,
@@ -270,12 +277,13 @@
 				933D074E294DFD3D00C43D54 /* Keybinding+CoreDataProperties.swift in Sources */,
 				933D074C294DFD3D00C43D54 /* Key+CoreDataProperties.swift in Sources */,
 				933D074D294DFD3D00C43D54 /* Keybinding+CoreDataClass.swift in Sources */,
+				934A3735294F7B18003E7A0F /* ClusterRowItem.swift in Sources */,
 				933D074B294DFD3D00C43D54 /* Key+CoreDataClass.swift in Sources */,
 				93FBE46E294CDD580064EC19 /* Key.swift in Sources */,
 				93FBE474294CE22E0064EC19 /* KeyboardShorts.xcdatamodeld in Sources */,
 				93FBDB0C294E2A4F001D2A2C /* View+Ext.swift in Sources */,
 				93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */,
-				93FBDB08294E28F6001D2A2C /* NewClusterView.swift in Sources */,
+				93FBDB08294E28F6001D2A2C /* ClusterCreateView.swift in Sources */,
 				93FBE47B294CE3880064EC19 /* KSErrors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

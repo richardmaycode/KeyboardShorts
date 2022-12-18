@@ -1,20 +1,20 @@
 //
-//  NewClusterView.swift
+//  ClusterRowItem.swift
 //  KeyboardShorts
 //
-//  Created by Richard Wise on 12/17/22.
+//  Created by Richard Wise on 12/18/22.
 //
 
 import SwiftUI
 
-struct NewClusterView: View {
+struct ClusterRowItem: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct NewClusterView_Previews: PreviewProvider {
+struct ClusterRowItem_Previews: PreviewProvider {
     static var previews: some View {
-        NewClusterView()
+        ClusterRowItem()
     }
 }
