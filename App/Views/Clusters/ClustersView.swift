@@ -59,18 +59,25 @@ struct ClustersView: View {
     }
     
     var emptyResults: some View {
-        VStack {
+        VStack(spacing: 16) {
             Image(systemName: KSSymbol.all)
-                .font(.system(size: 84))
+                .font(.system(size: 64))
                 .padding(.bottom, 5)
-            Text("You haven't created any clusters!!")
+            
+            Text("You haven't created any clusters!")
                 .font(.largeTitle)
+            
+            Text("Clusters are groups of keyboard shortcuts, you can group them by program, use case, or just put your favorites together.")
+                .multilineTextAlignment(.center)
+                .lineLimit(2, reservesSpace: true)
+                .frame(maxWidth: 500)
+                
+            
             HStack(spacing: 20) {
                 Button(action: { presentingNewCluster = true }) {
                     Text("Create Cluster")
                 }
                 .buttonStyle(.borderedProminent)
-                .padding(.vertical)
                 
                 
                 Button(action: { selection = .gallery }) {
@@ -78,9 +85,7 @@ struct ClustersView: View {
                 }
                 .buttonStyle(.borderedProminent)
             }
-           
         }
-        
     }
 }
 
