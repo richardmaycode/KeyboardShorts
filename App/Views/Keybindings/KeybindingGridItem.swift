@@ -20,6 +20,7 @@ struct KeybindingGridItem: View {
             Text(keybinding.wrappedName)
         }
         .frame(maxWidth: .infinity)
+        .padding(24)
     }
 }
 
