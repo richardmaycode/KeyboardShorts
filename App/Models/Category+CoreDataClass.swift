@@ -17,7 +17,7 @@ public class Category: NSManagedObject {
         modified = Date()
     }
     
-    override public func willSave() {
+    override public func didSave() {
         modified = Date()
     }
 }

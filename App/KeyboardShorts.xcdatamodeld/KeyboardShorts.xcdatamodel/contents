@@ -37,6 +37,6 @@
         <attribute name="summary" optional="YES" attributeType="String"/>
         <relationship name="category" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Category" inverseName="keybindings" inverseEntity="Category"/>
         <relationship name="cluster" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Cluster" inverseName="keybindings" inverseEntity="Cluster"/>
-        <relationship name="keys" toMany="YES" deletionRule="Nullify" destinationEntity="Key" inverseName="keybindings" inverseEntity="Key"/>
+        <relationship name="keys" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Key" inverseName="keybindings" inverseEntity="Key"/>
     </entity>
 </model>

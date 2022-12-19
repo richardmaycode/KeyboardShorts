@@ -19,7 +19,7 @@ struct ClustersView: View {
     
     @Binding var selection: Panel?
     
-    let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 8)
+    let columns: [GridItem] = [GridItem(.adaptive(minimum: 150))]
     
     var body: some View {
         VStack {
@@ -59,16 +59,22 @@ struct ClustersView: View {
                 .embedInNavigationStack()
         }
         .searchable(text: $searchText)
+        .navigationDestination(for: Cluster.self) { cluster in
+            ClusterDetailView(cluster: cluster)
+        }
     }
     
     var grid: some View {
         Group {
             LazyVGrid(columns: columns) {
                 ForEach(clusterResults) { cluster in
-                    ClusterGridItem(cluster: cluster)
+                    NavigationLink(value: cluster) {
+                        ClusterGridItem(cluster: cluster)
+                    }
+                    .buttonStyle(.plain)
                 }
             }
-            .padding(.top, 24)
+            .padding(24)
             
             Spacer()
         }

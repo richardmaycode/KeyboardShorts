@@ -49,4 +49,12 @@ extension Keybinding : Identifiable {
     public var wrappedName: String { name ?? "No Name Found" }
     public var wrappedCreated: Date { created ?? Date() }
     public var wrappedModified: Date { modified ?? Date() }
+    
+    public var wrappedCategoryName: String {
+        if let category = category {
+            return category.wrappedName
+        } else {
+            return "No Category"
+        }
+    }
 }

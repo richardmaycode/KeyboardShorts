@@ -13,6 +13,9 @@ struct KeyboardShortsApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, PersistenceManager.shared.viewContext)
+            #if os(macOS)
+                .frame(minWidth: 700, minHeight: 400)
+            #endif
         }
         #if os(macOS)
         .defaultSize(width: 1000, height: 650)

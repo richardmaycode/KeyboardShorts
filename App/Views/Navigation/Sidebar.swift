@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum Panel: Int, Hashable, Identifiable, CaseIterable {
-    case all, favorites, gallery, play, settings
+    case all, favorites, gallery, play, settings, cluster
     
     var id: Int { rawValue }
     
@@ -24,6 +24,8 @@ enum Panel: Int, Hashable, Identifiable, CaseIterable {
             return "Play"
         case .settings:
             return "Settings"
+        case .cluster:
+            return ""
         }
     }
     
@@ -39,6 +41,8 @@ enum Panel: Int, Hashable, Identifiable, CaseIterable {
             return KSSymbol.game
         case .settings:
             return KSSymbol.settings
+        case .cluster:
+            return ""
         }
     }
 }
@@ -51,11 +55,12 @@ struct Sidebar: View {
     var body: some View {
         List(selection: $selection) {
             ForEach(Panel.allCases) { panel in
-                NavigationLink(value: panel) {
-                    Label(panel.localizedName, systemImage: panel.icon)
+                if panel.rawValue != 5{
+                    NavigationLink(value: panel) {
+                        Label(panel.localizedName, systemImage: panel.icon)
+                    }
+                    .tag(panel)
                 }
-                .tag(panel)
-
             }
         }
         .navigationTitle("Board Shorts")

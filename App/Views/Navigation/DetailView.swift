@@ -23,6 +23,8 @@ struct DetailView: View {
             Text("Play")
         case .settings:
             Text("Settings")
+        case .cluster:
+            Text("Test")
         }
     }
 }

@@ -18,7 +18,11 @@ public class Keybinding: NSManagedObject {
         modified = Date()
     }
     
-    override public func willSave() {
+    override public func didSave() {
         modified = Date()
+    }
+    
+    @objc var keybindingCategoryName: String {
+        return self.category?.wrappedName ?? "No Category"
     }
 }
