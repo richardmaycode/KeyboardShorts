@@ -24,7 +24,7 @@ extension KeyReference {
         KeyReference(id: 2, name: "Globe", output: "globe", isSymbol: true),
         KeyReference(id: 3, name: "Control", output: "control", isSymbol: true),
         KeyReference(id: 4, name: "Option", output: "option", isSymbol: true),
-        KeyReference(id: 5, name: "name", output: "name", isSymbol: true),
+        KeyReference(id: 5, name: "Command", output: "command", isSymbol: true),
         KeyReference(id: 6, name: "Space", output: "space", isSymbol: true),
         KeyReference(id: 7, name: "Shift", output: "shift", isSymbol: true),
         KeyReference(id: 8, name: "Capslock", output: "capslock", isSymbol: true),

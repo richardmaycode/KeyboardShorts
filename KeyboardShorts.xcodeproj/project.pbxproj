@@ -19,6 +19,8 @@
 		934A3739294FB147003E7A0F /* KSGradientColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A3738294FB147003E7A0F /* KSGradientColor.swift */; };
 		934A373D2950ECA2003E7A0F /* KeybindingCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934A373C2950ECA2003E7A0F /* KeybindingCreateView.swift */; };
 		93887E112951134900B29DFB /* KeybindingGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93887E102951134900B29DFB /* KeybindingGridItem.swift */; };
+		93887E142951F37E00B29DFB /* KeyGridItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93887E132951F37E00B29DFB /* KeyGridItem.swift */; };
+		93887E162952193600B29DFB /* KeyGroupItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93887E152952193600B29DFB /* KeyGroupItem.swift */; };
 		938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */; };
 		938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */; };
 		93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB03294E21A1001D2A2C /* ClustersView.swift */; };
@@ -52,6 +54,8 @@
 		934A3738294FB147003E7A0F /* KSGradientColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KSGradientColor.swift; sourceTree = "<group>"; };
 		934A373C2950ECA2003E7A0F /* KeybindingCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeybindingCreateView.swift; sourceTree = "<group>"; };
 		93887E102951134900B29DFB /* KeybindingGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeybindingGridItem.swift; sourceTree = "<group>"; };
+		93887E132951F37E00B29DFB /* KeyGridItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGridItem.swift; sourceTree = "<group>"; };
+		93887E152952193600B29DFB /* KeyGroupItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGroupItem.swift; sourceTree = "<group>"; };
 		938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "App/Models/Category+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "App/Models/Category+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		93FBDB03294E21A1001D2A2C /* ClustersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustersView.swift; sourceTree = "<group>"; };
@@ -99,6 +103,15 @@
 				93887E102951134900B29DFB /* KeybindingGridItem.swift */,
 			);
 			path = Keybindings;
+			sourceTree = "<group>";
+		};
+		93887E122951F36B00B29DFB /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				93887E132951F37E00B29DFB /* KeyGridItem.swift */,
+				93887E152952193600B29DFB /* KeyGroupItem.swift */,
+			);
+			path = Keys;
 			sourceTree = "<group>";
 		};
 		93FBDB02294E217F001D2A2C /* Clusters */ = {
@@ -189,6 +202,7 @@
 		93FBE471294CE1200064EC19 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93887E122951F36B00B29DFB /* Keys */,
 				934A373B2950EC83003E7A0F /* Keybindings */,
 				934A373A2950EC6C003E7A0F /* Categories */,
 				93FBDB02294E217F001D2A2C /* Clusters */,
@@ -289,6 +303,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93887E162952193600B29DFB /* KeyGroupItem.swift in Sources */,
 				93FBE480294D00480064EC19 /* KSSymbols.swift in Sources */,
 				938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */,
 				93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */,
@@ -298,6 +313,7 @@
 				933D0749294DFD3D00C43D54 /* Cluster+CoreDataClass.swift in Sources */,
 				93FBE461294CDB2E0064EC19 /* ContentView.swift in Sources */,
 				93FBE482294D010A0064EC19 /* DetailView.swift in Sources */,
+				93887E142951F37E00B29DFB /* KeyGridItem.swift in Sources */,
 				934A3739294FB147003E7A0F /* KSGradientColor.swift in Sources */,
 				93FBE47E294CFF080064EC19 /* Sidebar.swift in Sources */,
 				93FBE476294CE26D0064EC19 /* PersistenceManager.swift in Sources */,

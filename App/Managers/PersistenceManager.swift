@@ -23,10 +23,34 @@ class PersistenceManager {
         do {
             
             let objects = try viewContext.fetch(fetchRequest)
+            // MARK: Generate All Keyboard Items
             if objects.isEmpty {
-                print("No Results!!!!")
+                for key in KeyReference.data {
+                    let newKey = Key(context: viewContext)
+                    newKey.id = Int32(key.id)
+                    newKey.name = key.name
+                    newKey.output = key.output
+                    newKey.isIcon = key.isSymbol
+                }
+                
+                
             }
-        } catch {}
+            
+            // MARK: Generate All Missing Items
+            if objects.count != KeyReference.data.count {
+                for key in KeyReference.data {
+                    if !objects.contains(where: { $0.id == key.id }) {
+                        let newKey = Key(context: viewContext)
+                        newKey.id = Int32(key.id)
+                        newKey.name = key.name
+                        newKey.output = key.output
+                        newKey.isIcon = key.isSymbol
+                    }
+                }
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
         
 
         

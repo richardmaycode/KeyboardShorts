@@ -126,7 +126,7 @@ struct ClusterDetailView: View {
         }
     }
     
-    func addRecord(name: String, summary: String, category: String, keys: [Key]) {
+    func addRecord(name: String, summary: String, category: Category?, keys: [Key]) {
         let keybinding = Keybinding(context: viewContext)
         keybinding.name = name
         keybinding.summary = summary
@@ -135,8 +135,8 @@ struct ClusterDetailView: View {
             keybinding.addToKeys(key)
         }
         
-        if category != "No Category" {
-            
+        if let category = category {
+            category.addToKeybindings(keybinding)
         }
         
         cluster.addToKeybindings(keybinding)

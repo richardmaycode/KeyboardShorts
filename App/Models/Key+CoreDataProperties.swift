@@ -44,6 +44,8 @@ extension Key {
 }
 
 extension Key : Identifiable {
+    public var wrappedName: String { name ?? "Unknown"}
+    public var wrappedOutput: String { output ?? "puzzlepiece"}
 
     
     public var wrappedCreated: Date { created ?? Date() }
