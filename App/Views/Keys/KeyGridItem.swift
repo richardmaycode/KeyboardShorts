@@ -10,34 +10,41 @@ import SwiftUI
 struct KeysGridItem: View {
     
     let key: Key
+    let isSelected: Bool
     
     var body: some View {
         VStack(spacing: 8) {
-            // TODO: Export style to custom modifier
             if key.isIcon {
                 Image(systemName: key.wrappedOutput)
-                    .frame(width: 75, height: 75, alignment: .center)
-                    .background {
-                        Circle()
-                            .fill(.gray.opacity(0.2))
-                    }
+                    .font(.title)
+
             } else {
                 Text(key.wrappedOutput)
-                    .frame(width: 75, height: 75, alignment: .center)
-                    .background {
-                        Circle()
-                            .fill(.gray.opacity(0.2))
-                    }
             }
-            
-            Text(key.wrappedName)
         }
+        
+        .frame(width: 50, height: 50)
+        .padding()
+        .overlay {
+            Circle()
+                .fill(isSelected ? Color.accentColor.opacity(0.3) : .clear)
+        }
+        .foregroundColor(isSelected ? .accentColor : .black)
+        .fontWeight(isSelected ? .bold : .regular)
 
     }
 }
 
 struct KeysGridItem_Previews: PreviewProvider {
     static var previews: some View {
-        KeysGridItem(key: Key())
+        let viewContext = PersistenceManager.preview.viewContext
+        let key = Key(context: viewContext)
+        key.id = 1
+        key.name = "Command"
+        key.output = "command"
+        key.isIcon = true
+        
+        return KeysGridItem(key: key, isSelected: true)
+            .previewLayout(.fixed(width: 200, height: 200))
     }
 }

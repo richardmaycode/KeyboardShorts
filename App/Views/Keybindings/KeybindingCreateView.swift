@@ -18,7 +18,7 @@ struct KeybindingCreateView: View {
     
     @FetchRequest(sortDescriptors: [])
     private var categories: FetchedResults<Category>
-    @FetchRequest(sortDescriptors: [])
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.isIcon, order: .reverse)])
     private var availableKeys: FetchedResults<Key>
     
     
@@ -28,15 +28,16 @@ struct KeybindingCreateView: View {
     let columns: [GridItem] = [GridItem(.adaptive(minimum: 100))]
     
     init(cluster: Cluster, onAdd: ( (String, String, Category?, [Key]) -> Void)?, onCancel: ( () -> Void)?) {
-
+        
         _categories = FetchRequest<Category>(
-            sortDescriptors: [],
+            sortDescriptors: [SortDescriptor(\.name)],
             predicate: NSPredicate(format: "cluster == %@", cluster)
         )
         self.cluster = cluster
         self.onAdd = onAdd
         self.onCancel = onCancel
     }
+    
     // TODO: Move views to subviews
     var body: some View {
         VStack {
@@ -69,49 +70,46 @@ struct KeybindingCreateView: View {
                 // TODO: Extract to subview
                 ScrollView {
                     LazyVGrid(columns: columns) {
-                        ForEach(availableKeys) { key in
-                            KeysGridItem(key: key)
+                        ForEach(availableKeys)  { key in
+                            let inSelection = keys.contains(key)
+                            KeysGridItem(key: key, isSelected: inSelection)
                                 .onTapGesture {
-                                    keys.append(key) // TODO: Test withAnimation()
+                                    guard !keys.contains(key) else { keys.removeAll(where: { $0 == key})
+                                        return
+                                    }
+                                    if keys.count < 5 {
+                                        keys.append(key)
+                                    }
                                 }
                         }
                     }
                 }
-                .frame(maxHeight: 375)
+                .frame(maxHeight: 250)
             }
-            .navigationTitle("Create Keybinding")
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: { onCancel?() } ) {
-                        Text("Dismiss")
-                    }
-                }
-                
-                ToolbarItem(placement: .primaryAction) {
-                    Button(action: { onAdd?(name, summary, selectedCategory, keys) }) {
-                        Text("Submit")
-                    }
-                    .disabled(!validForm())
-                }
-        }
             
             Spacer()
+            
             Text("Binding Example")
                 .frame(maxWidth: .infinity, alignment: .center)
-                .multilineTextAlignment(.center)
-            HStack {
-                ForEach(keys) { key in
-                    KeyGroupItem(key: key)
+            
+            KeyGroup(keys: $keys)
+                
+            Spacer()
+        }
+        .navigationTitle("Create Keybinding")
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: { onCancel?() } ) {
+                    Text("Dismiss")
                 }
             }
-            .padding()
-            .frame(minWidth: 200, maxWidth: 400, maxHeight: 100)
-            .background {
-                Capsule()
-                    .fill(Color(uiColor: .quaternarySystemFill))
-            }
             
-            Spacer()
+            ToolbarItem(placement: .primaryAction) {
+                Button(action: { onAdd?(name, summary, selectedCategory, keys) }) {
+                    Text("Submit")
+                }
+                .disabled(!validForm())
+            }
         }
     }
     

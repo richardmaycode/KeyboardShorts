@@ -8,29 +8,41 @@
 import SwiftUI
 
 struct KeyGroupItem: View {
-    
+    @Environment(\.colorScheme) private var colorScheme
     let key: Key
     
     var body: some View {
         Group {
             if key.isIcon {
                 Image(systemName: key.wrappedOutput)
+                    .font(.largeTitle)
+                    .foregroundColor(.accentColor)
+                    .fontWeight(colorScheme == .dark ? .regular : .bold)
             } else {
                 Text(key.wrappedOutput)
             }
         }
-        .frame(width: 75, height: 75)
+        .frame(width: 55, height: 55)
         .padding()
         .background {
             Circle()
                 .fill(Color(uiColor: .quaternarySystemFill))
-                .padding()
+
         }
+        .padding(5)
     }
 }
 
 struct KeyGroupItem_Previews: PreviewProvider {
     static var previews: some View {
-        KeyGroupItem(key: Key())
+        let viewContext = PersistenceManager.preview.viewContext
+        let key = Key(context: viewContext)
+        key.id = 1
+        key.name = "Command"
+        key.output = "command"
+        key.isIcon = true
+        
+        return KeyGroupItem(key: key)
+            .previewLayout(.fixed(width: 200, height: 200))
     }
 }

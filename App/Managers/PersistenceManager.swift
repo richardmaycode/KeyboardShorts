@@ -11,7 +11,14 @@ class PersistenceManager {
     static let shared = PersistenceManager()
     private var container: NSPersistentContainer
     
-    private init() {
+    static var preview: PersistenceManager = {
+        let manager = PersistenceManager(inMemory: true)
+        
+        return manager
+    }()
+    
+    
+    init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: KSStrings.datastore)
         container.loadPersistentStores { description, error in
             if let error { fatalError(KSErrors.initCoreDataFailed + " Error: \(error)") }
@@ -49,11 +56,9 @@ class PersistenceManager {
                 }
             }
         } catch {
-            print(error.localizedDescription)
+            print(error.localizedDescription) // TODO: Handle this Error
         }
     }
-    
-    // TODO: Create preview context
     
     var viewContext: NSManagedObjectContext { container.viewContext }
 }

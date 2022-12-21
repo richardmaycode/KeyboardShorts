@@ -81,21 +81,22 @@ struct ClustersView: View {
     }
     
     var list: some View {
-        Table(clusterResults) {
-            TableColumn("Name", value: \.wrappedName)
-            TableColumn("Summary") { cluster in
-                Text(cluster.summary ?? "")
-            }
-            TableColumn("Custom Cluster") { cluster in
-                Text(cluster.isPersonal ? "Yes" : "No")
-            }
-            TableColumn("Created") { cluster in
-                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
-            }
-            TableColumn("Modified") { cluster in
-                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
-            }
-        }
+        Text("Table")
+//        Table(clusterResults) {
+//            TableColumn("Name", value: \.wrappedName)
+//            TableColumn("Summary") { cluster in
+//                Text(cluster.summary ?? "")
+//            }
+//            TableColumn("Custom Cluster") { cluster in
+//                Text(cluster.isPersonal ? "Yes" : "No")
+//            }
+//            TableColumn("Created") { cluster in
+//                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
+//            }
+//            TableColumn("Modified") { cluster in
+//                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
+//            }
+//        }
     }
     
     var emptyResults: some View {
