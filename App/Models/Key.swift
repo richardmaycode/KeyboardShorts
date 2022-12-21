@@ -15,6 +15,7 @@ struct KeyReference: Identifiable {
     
 }
 
+// TODO: Move data to Key class and delete KeyReference
 extension KeyReference {
     static let data: [KeyReference] = [
         
