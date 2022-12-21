@@ -13,6 +13,7 @@ struct KeysGridItem: View {
     
     var body: some View {
         VStack(spacing: 8) {
+            // TODO: Export style to custom modifier
             if key.isIcon {
                 Image(systemName: key.wrappedOutput)
                     .frame(width: 75, height: 75, alignment: .center)

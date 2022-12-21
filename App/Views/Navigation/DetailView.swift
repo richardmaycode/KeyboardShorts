@@ -16,13 +16,13 @@ struct DetailView: View {
         case .all: ClustersView(selection: $selection)
             
         case .favorites:
-            Text("Favs")
+            Text("Favs") // TODO: Explore marking lists as favorites
         case .gallery:
-            Text("Gallery")
+            Text("Gallery") // TODO: Create Gallery View
         case .play:
-            Text("Play")
+            Text("Play") // TODO: Create Play Gallery View
         case .settings:
-            Text("Settings")
+            Text("Settings") // TODO: Create Settings View
         case .cluster:
             Text("Test")
         }

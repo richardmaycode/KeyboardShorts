@@ -51,10 +51,9 @@ class PersistenceManager {
         } catch {
             print(error.localizedDescription)
         }
-        
-
-        
     }
+    
+    // TODO: Create preview context
     
     var viewContext: NSManagedObjectContext { container.viewContext }
 }

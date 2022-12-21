@@ -66,12 +66,13 @@ struct KeybindingCreateView: View {
                 
                 TextField("Search", text: $keySearchText)
                 
+                // TODO: Extract to subview
                 ScrollView {
                     LazyVGrid(columns: columns) {
                         ForEach(availableKeys) { key in
                             KeysGridItem(key: key)
                                 .onTapGesture {
-                                    keys.append(key)
+                                    keys.append(key) // TODO: Test withAnimation()
                                 }
                         }
                     }
