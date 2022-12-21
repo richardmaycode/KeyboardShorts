@@ -37,7 +37,7 @@ struct KeybindingCreateView: View {
         self.onAdd = onAdd
         self.onCancel = onCancel
     }
-    
+    // TODO: Move views to subviews
     var body: some View {
         VStack {
             Form {
@@ -46,6 +46,7 @@ struct KeybindingCreateView: View {
                 TextField("summary", text: $summary, axis: .vertical)
                     .lineLimit(3...)
                 
+                // TODO: Add ability to create category while on the new keybinding screen
                 Picker("Category", selection: $category) {
                     Text("No Category")
                         .tag("No Category")
@@ -76,9 +77,6 @@ struct KeybindingCreateView: View {
                     }
                 }
                 .frame(maxHeight: 375)
-                
-
-                
             }
             .navigationTitle("Create Keybinding")
             .toolbar {

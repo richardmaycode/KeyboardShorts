@@ -37,7 +37,7 @@ struct ClusterDetailView: View {
     var body: some View {
         VStack {
             if viewType == .grid {
-                grid
+                grid // TODO: Update grid section headers to include number of bindings in section
             } else {
                 list()
             }
@@ -145,10 +145,12 @@ struct ClusterDetailView: View {
             try viewContext.save()
             count += 1
         } catch {
+            // TODO: Handle Error with alert
             print(error.localizedDescription)
         }
     }
     
+    // TODO: Build New Category Form
     func addCategory() {
         let categories = ["Test", "Test2", "Test3", "Test4"]
         
@@ -162,6 +164,7 @@ struct ClusterDetailView: View {
             try viewContext.save()
             presentingAddSection = false
         } catch {
+            // TODO: Handle Error with alert
             print(error.localizedDescription)
         }
     }

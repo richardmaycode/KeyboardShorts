@@ -28,12 +28,21 @@ struct ClusterCreateView: View {
             
             ToolbarItem(placement: .primaryAction) {
                 Button("Submit", action: { onAdd?(name, summary, true) })
+                    .disabled(!validForm())
             }
         }
         #if os(macOS)
         .frame(width: 400, height: 100)
         .padding()
         #endif
+    }
+    
+    func validForm() -> Bool {
+        validName()
+    }
+    
+    func validName() -> Bool {
+        name.filter { !$0.isWhitespace }.count > 3
     }
 }
 
