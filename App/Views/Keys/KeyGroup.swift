@@ -23,7 +23,7 @@ struct KeyGroup: View {
                     }
             }
         }
-        .frame(minHeight: 100)
+        .frame(maxHeight: 100)
         .padding()
         .background {
             Capsule()

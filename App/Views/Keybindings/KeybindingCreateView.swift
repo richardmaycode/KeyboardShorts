@@ -66,11 +66,12 @@ struct KeybindingCreateView: View {
                 }
                 
                 TextField("Search", text: $keySearchText)
+                    
                 
                 // TODO: Extract to subview
                 ScrollView {
                     LazyVGrid(columns: columns) {
-                        ForEach(availableKeys)  { key in
+                        ForEach(availableKeys.filter { $0.wrappedName.hasPrefix(keySearchText) })  { key in
                             let inSelection = keys.contains(key)
                             KeysGridItem(key: key, isSelected: inSelection)
                                 .onTapGesture {
@@ -90,10 +91,12 @@ struct KeybindingCreateView: View {
             Spacer()
             
             Text("Binding Example")
+                
+                .font(.system(.title, design: .monospaced, weight: .bold))
                 .frame(maxWidth: .infinity, alignment: .center)
             
             KeyGroup(keys: $keys)
-                
+                .frame(minHeight: 175, maxHeight: 175)
             Spacer()
         }
         .navigationTitle("Create Keybinding")
