@@ -24,6 +24,8 @@
 		938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */; };
 		938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */; };
 		93D2134D29534C300038E8C7 /* KeyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2134C29534C300038E8C7 /* KeyGroup.swift */; };
+		93D2134F2954F4260038E8C7 /* KeyArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2134E2954F4260038E8C7 /* KeyArcView.swift */; };
+		93D213512954F5830038E8C7 /* KeySegmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D213502954F5830038E8C7 /* KeySegmentsView.swift */; };
 		93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB03294E21A1001D2A2C /* ClustersView.swift */; };
 		93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB05294E22F2001D2A2C /* ViewType.swift */; };
 		93FBDB08294E28F6001D2A2C /* ClusterCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */; };
@@ -60,6 +62,8 @@
 		938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "App/Models/Category+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "App/Models/Category+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		93D2134C29534C300038E8C7 /* KeyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGroup.swift; sourceTree = "<group>"; };
+		93D2134E2954F4260038E8C7 /* KeyArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyArcView.swift; sourceTree = "<group>"; };
+		93D213502954F5830038E8C7 /* KeySegmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySegmentsView.swift; sourceTree = "<group>"; };
 		93FBDB03294E21A1001D2A2C /* ClustersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustersView.swift; sourceTree = "<group>"; };
 		93FBDB05294E22F2001D2A2C /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterCreateView.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 				93887E132951F37E00B29DFB /* KeyGridItem.swift */,
 				93887E152952193600B29DFB /* KeyGroupItem.swift */,
 				93D2134C29534C300038E8C7 /* KeyGroup.swift */,
+				93D213502954F5830038E8C7 /* KeySegmentsView.swift */,
 			);
 			path = Keys;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				934A373A2950EC6C003E7A0F /* Categories */,
 				93FBDB02294E217F001D2A2C /* Clusters */,
 				93FBE47C294CFEF20064EC19 /* Navigation */,
+				93D2134E2954F4260038E8C7 /* KeyArcView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -311,6 +317,8 @@
 				938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */,
 				93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */,
 				93FBE479294CE2E50064EC19 /* KSStrings.swift in Sources */,
+				93D2134F2954F4260038E8C7 /* KeyArcView.swift in Sources */,
+				93D213512954F5830038E8C7 /* KeySegmentsView.swift in Sources */,
 				938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */,
 				934A3733294F793A003E7A0F /* ClusterGridItem.swift in Sources */,
 				933D0749294DFD3D00C43D54 /* Cluster+CoreDataClass.swift in Sources */,
