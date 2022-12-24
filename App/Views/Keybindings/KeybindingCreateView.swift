@@ -75,11 +75,17 @@ struct KeybindingCreateView: View {
                             let inSelection = keys.contains(key)
                             KeysGridItem(key: key, isSelected: inSelection)
                                 .onTapGesture {
-                                    guard !keys.contains(key) else { keys.removeAll(where: { $0 == key})
-                                        return
-                                    }
-                                    if keys.count < 5 {
-                                        keys.append(key)
+                                    withAnimation(.linear(duration: 0.5)){
+                                        guard !keys.contains(key) else {
+                                            
+                                            keys.removeAll(where: { $0 == key})
+                                            return
+                                        }
+                                        if keys.count < 5 {
+                                            
+                                            keys.append(key)
+                                            
+                                        }
                                     }
                                 }
                         }
@@ -90,13 +96,21 @@ struct KeybindingCreateView: View {
             
             Spacer()
             
-            Text("Binding Example")
+            Group {
+                Text("Binding Example")
+                  
+                    
+                    .font(.system(.title, design: .monospaced, weight: .bold))
+                    .frame(maxWidth: .infinity, alignment: .center)
+                    .overlay(alignment: .topTrailing) {
+                        KeySegmentsView(segments: keys.indices.map { Int($0) })
+                    }
                 
-                .font(.system(.title, design: .monospaced, weight: .bold))
-                .frame(maxWidth: .infinity, alignment: .center)
+                KeyGroup(keys: $keys)
+                    .frame(minHeight: 175, maxHeight: 175)
+            }
             
-            KeyGroup(keys: $keys)
-                .frame(minHeight: 175, maxHeight: 175)
+
             Spacer()
         }
         .navigationTitle("Create Keybinding")

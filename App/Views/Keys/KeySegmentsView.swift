@@ -9,50 +9,42 @@ import SwiftUI
 
 struct KeySegmentsView: View {
     
-    let segments: [Int] = [1,2]
+    let segments: [Int]
     let maxSegments: Int = 5
     
     var body: some View {
-//        Circle()
-//            .strokeBorder(lineWidth: 24, antialiased: true)
-//
-//            .overlay {
-//
-//            }
-//            .padding(.horizontal)
-//            .foregroundColor(Color.clear)
-        
+
         ZStack {
             ForEach(0..<maxSegments, id: \.self) { segment in
                 KeyArcView(segmentIndex: segment, totalSegments: maxSegments)
                     .rotation(Angle(degrees: -175))
-                    .stroke(style: StrokeStyle(lineWidth: 7,lineCap: .round))
-                //                        .stroke(Color.accentColor)
+                    .stroke(style: StrokeStyle(lineWidth: 4,lineCap: .round))
                     .fill(Color(uiColor: .quaternarySystemFill))
                 
                 
             }
+            .overlay {
+                Text("\(maxSegments - segments.count)")
+            }
             
             ForEach(segments, id: \.self) { segment in
                 KeyArcView(segmentIndex: segment, totalSegments: maxSegments)
-                    .rotation(Angle(degrees: -175))
-                    .stroke(style: StrokeStyle(lineWidth: 7,lineCap: .round))
-                //                        .stroke(Color.accentColor)
+                    .rotation(Angle(degrees: -105))
+                    .stroke(style: StrokeStyle(lineWidth: 4,lineCap: .round))
                     .fill(Color.accentColor)
                 
                 
             }
         }
         .padding(.horizontal)
-        .overlay {
-            Text("\(maxSegments - segments.count)")
-        }
+        .frame(width: 75, height: 75)
+
     }
 }
 
 struct KeySegmentsView_Previews: PreviewProvider {
     static var previews: some View {
-        KeySegmentsView()
+        KeySegmentsView(segments: [1,2])
             .previewLayout(.fixed(width: 100, height: 100))
     }
 }

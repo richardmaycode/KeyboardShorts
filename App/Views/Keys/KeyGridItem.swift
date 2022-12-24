@@ -29,7 +29,7 @@ struct KeysGridItem: View {
             Circle()
                 .fill(isSelected ? Color.accentColor.opacity(0.3) : .clear)
         }
-        .foregroundColor(isSelected ? .accentColor : .black)
+        .foregroundColor(isSelected ? .accentColor : .primary)
         .fontWeight(isSelected ? .bold : .regular)
 
     }
