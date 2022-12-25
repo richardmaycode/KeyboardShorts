@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		932A0266295791F1000AAD1E /* KeyCounterBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A0265295791F1000AAD1E /* KeyCounterBackground.swift */; };
+		932A026829579B88000AAD1E /* KeyCounterForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A026729579B88000AAD1E /* KeyCounterForeground.swift */; };
+		932A026A2957DDE6000AAD1E /* KeyCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A02692957DDE6000AAD1E /* KeyCounter.swift */; };
 		933D0749294DFD3D00C43D54 /* Cluster+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0741294DFD3D00C43D54 /* Cluster+CoreDataClass.swift */; };
 		933D074A294DFD3D00C43D54 /* Cluster+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0742294DFD3D00C43D54 /* Cluster+CoreDataProperties.swift */; };
 		933D074B294DFD3D00C43D54 /* Key+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0743294DFD3D00C43D54 /* Key+CoreDataClass.swift */; };
@@ -24,8 +27,6 @@
 		938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */; };
 		938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */; };
 		93D2134D29534C300038E8C7 /* KeyGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2134C29534C300038E8C7 /* KeyGroup.swift */; };
-		93D2134F2954F4260038E8C7 /* KeyArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D2134E2954F4260038E8C7 /* KeyArcView.swift */; };
-		93D213512954F5830038E8C7 /* KeySegmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D213502954F5830038E8C7 /* KeySegmentsView.swift */; };
 		93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB03294E21A1001D2A2C /* ClustersView.swift */; };
 		93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB05294E22F2001D2A2C /* ViewType.swift */; };
 		93FBDB08294E28F6001D2A2C /* ClusterCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */; };
@@ -45,6 +46,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		932A0265295791F1000AAD1E /* KeyCounterBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCounterBackground.swift; sourceTree = "<group>"; };
+		932A026729579B88000AAD1E /* KeyCounterForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCounterForeground.swift; sourceTree = "<group>"; };
+		932A02692957DDE6000AAD1E /* KeyCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCounter.swift; sourceTree = "<group>"; };
 		933D0741294DFD3D00C43D54 /* Cluster+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Cluster+CoreDataClass.swift"; path = "App/Models/Cluster+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		933D0742294DFD3D00C43D54 /* Cluster+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Cluster+CoreDataProperties.swift"; path = "App/Models/Cluster+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		933D0743294DFD3D00C43D54 /* Key+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Key+CoreDataClass.swift"; path = "App/Models/Key+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -62,8 +66,6 @@
 		938A7ABA294E00CA0008A3F3 /* Category+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataClass.swift"; path = "App/Models/Category+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		938A7ABB294E00CA0008A3F3 /* Category+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Category+CoreDataProperties.swift"; path = "App/Models/Category+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		93D2134C29534C300038E8C7 /* KeyGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyGroup.swift; sourceTree = "<group>"; };
-		93D2134E2954F4260038E8C7 /* KeyArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyArcView.swift; sourceTree = "<group>"; };
-		93D213502954F5830038E8C7 /* KeySegmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeySegmentsView.swift; sourceTree = "<group>"; };
 		93FBDB03294E21A1001D2A2C /* ClustersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClustersView.swift; sourceTree = "<group>"; };
 		93FBDB05294E22F2001D2A2C /* ViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewType.swift; sourceTree = "<group>"; };
 		93FBDB07294E28F6001D2A2C /* ClusterCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterCreateView.swift; sourceTree = "<group>"; };
@@ -95,6 +97,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		932A026B2957E5CA000AAD1E /* KeysCounter */ = {
+			isa = PBXGroup;
+			children = (
+				932A02692957DDE6000AAD1E /* KeyCounter.swift */,
+				932A0265295791F1000AAD1E /* KeyCounterBackground.swift */,
+				932A026729579B88000AAD1E /* KeyCounterForeground.swift */,
+			);
+			path = KeysCounter;
+			sourceTree = "<group>";
+		};
 		934A373A2950EC6C003E7A0F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +126,10 @@
 		93887E122951F36B00B29DFB /* Keys */ = {
 			isa = PBXGroup;
 			children = (
+				932A026B2957E5CA000AAD1E /* KeysCounter */,
 				93887E132951F37E00B29DFB /* KeyGridItem.swift */,
 				93887E152952193600B29DFB /* KeyGroupItem.swift */,
 				93D2134C29534C300038E8C7 /* KeyGroup.swift */,
-				93D213502954F5830038E8C7 /* KeySegmentsView.swift */,
 			);
 			path = Keys;
 			sourceTree = "<group>";
@@ -215,7 +227,6 @@
 				934A373A2950EC6C003E7A0F /* Categories */,
 				93FBDB02294E217F001D2A2C /* Clusters */,
 				93FBE47C294CFEF20064EC19 /* Navigation */,
-				93D2134E2954F4260038E8C7 /* KeyArcView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,8 +328,6 @@
 				938A7ABD294E00CA0008A3F3 /* Category+CoreDataProperties.swift in Sources */,
 				93FBDB06294E22F3001D2A2C /* ViewType.swift in Sources */,
 				93FBE479294CE2E50064EC19 /* KSStrings.swift in Sources */,
-				93D2134F2954F4260038E8C7 /* KeyArcView.swift in Sources */,
-				93D213512954F5830038E8C7 /* KeySegmentsView.swift in Sources */,
 				938A7ABC294E00CA0008A3F3 /* Category+CoreDataClass.swift in Sources */,
 				934A3733294F793A003E7A0F /* ClusterGridItem.swift in Sources */,
 				933D0749294DFD3D00C43D54 /* Cluster+CoreDataClass.swift in Sources */,
@@ -336,13 +345,16 @@
 				934A3735294F7B18003E7A0F /* ClusterRowItem.swift in Sources */,
 				933D074B294DFD3D00C43D54 /* Key+CoreDataClass.swift in Sources */,
 				93FBE46E294CDD580064EC19 /* Key.swift in Sources */,
+				932A026829579B88000AAD1E /* KeyCounterForeground.swift in Sources */,
 				93887E112951134900B29DFB /* KeybindingGridItem.swift in Sources */,
 				93FBE474294CE22E0064EC19 /* KeyboardShorts.xcdatamodeld in Sources */,
+				932A0266295791F1000AAD1E /* KeyCounterBackground.swift in Sources */,
 				93FBDB0C294E2A4F001D2A2C /* View+Ext.swift in Sources */,
 				934A3737294F8D00003E7A0F /* ClusterDetailView.swift in Sources */,
 				93D2134D29534C300038E8C7 /* KeyGroup.swift in Sources */,
 				93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */,
 				93FBDB08294E28F6001D2A2C /* ClusterCreateView.swift in Sources */,
+				932A026A2957DDE6000AAD1E /* KeyCounter.swift in Sources */,
 				934A373D2950ECA2003E7A0F /* KeybindingCreateView.swift in Sources */,
 				93FBE47B294CE3880064EC19 /* KSErrors.swift in Sources */,
 			);

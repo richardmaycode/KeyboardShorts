@@ -15,6 +15,7 @@ struct KeybindingCreateView: View {
     @State var category: String = "No Category"
     @State var selectedCategory: Category?
     @State var keySearchText: String = ""
+    @State var keysState: [Int: Bool] = [1: false, 2: false, 3: false, 4: false, 5: false]
     
     @FetchRequest(sortDescriptors: [])
     private var categories: FetchedResults<Category>
@@ -66,7 +67,7 @@ struct KeybindingCreateView: View {
                 }
                 
                 TextField("Search", text: $keySearchText)
-                    
+                
                 
                 // TODO: Extract to subview
                 ScrollView {
@@ -75,18 +76,22 @@ struct KeybindingCreateView: View {
                             let inSelection = keys.contains(key)
                             KeysGridItem(key: key, isSelected: inSelection)
                                 .onTapGesture {
-                                    withAnimation(.linear(duration: 0.5)){
-                                        guard !keys.contains(key) else {
-                                            
-                                            keys.removeAll(where: { $0 == key})
-                                            return
+                                    
+                                    guard !keys.contains(key) else {
+                                        if let index = keys.indices.last {
+                                            keysState[index] = false
                                         }
-                                        if keys.count < 5 {
-                                            
-                                            keys.append(key)
-                                            
+                                        keys.removeAll(where: { $0 == key})
+                                        return
+                                    }
+                                    if keys.count < 5 {
+                                        
+                                        keys.append(key)
+                                        for index in keys.indices {
+                                            keysState[index] = true
                                         }
                                     }
+                                    
                                 }
                         }
                     }
@@ -98,19 +103,20 @@ struct KeybindingCreateView: View {
             
             Group {
                 Text("Binding Example")
-                  
-                    
+                
+                
                     .font(.system(.title, design: .monospaced, weight: .bold))
                     .frame(maxWidth: .infinity, alignment: .center)
                     .overlay(alignment: .topTrailing) {
-                        KeySegmentsView(segments: keys.indices.map { Int($0) })
+                        KeyCounter(keysState: keysState)
+                        //                        KeySegmentsView(segments: keys.indices.map { Int($0) }, full: keys.count == 5)
                     }
                 
                 KeyGroup(keys: $keys)
                     .frame(minHeight: 175, maxHeight: 175)
             }
             
-
+            
             Spacer()
         }
         .navigationTitle("Create Keybinding")
