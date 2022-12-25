@@ -178,11 +178,11 @@
 		93FBE45D294CDB2E0064EC19 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				93FBDB0A294E2A3A001D2A2C /* Extensions */,
 				93FBE45E294CDB2E0064EC19 /* App.swift */,
 				93FBE462294CDB2F0064EC19 /* Assets.xcassets */,
 				93FBE464294CDB2F0064EC19 /* KeyboardShorts.entitlements */,
 				93FBE472294CE22E0064EC19 /* KeyboardShorts.xcdatamodeld */,
+				93FBDB0A294E2A3A001D2A2C /* Extensions */,
 				93FBE477294CE2CD0064EC19 /* Helpers */,
 				93FBE470294CE10E0064EC19 /* Managers */,
 				93FBE46F294CDF250064EC19 /* Models */,

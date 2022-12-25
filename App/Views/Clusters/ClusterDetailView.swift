@@ -169,6 +169,7 @@ struct ClusterDetailView: View {
 
 struct ClusterDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ClusterDetailView(cluster: Cluster())
+        ClusterDetailView(cluster: PersistenceManager().previewCluster())
+            .embedInNavigationStack()
     }
 }
