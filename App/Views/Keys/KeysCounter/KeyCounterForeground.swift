@@ -43,8 +43,6 @@ struct KeyCounterForeground: View {
                 .stroke(style: StrokeStyle(lineWidth: 5,lineCap: .round))
                 .fill(Color.accentColor)
                 .animation(.linear(duration: 0.25), value: value) // FIXME: First animation does not run correctly
-                
-                
             }
         }
         .padding(.horizontal, 30)

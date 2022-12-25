@@ -17,6 +17,9 @@ struct ClusterDetailView: View {
     @SectionedFetchRequest
     private var keybindings: SectionedFetchResults<String, Keybinding>
     
+    @FetchRequest
+    private var emptyCategories: FetchedResults<Category>
+    
     @State var viewType: ViewType = .grid
     @State var presentingAddKeybinding: Bool = false
     @State var presentingAddSection: Bool = false
@@ -29,6 +32,13 @@ struct ClusterDetailView: View {
             sectionIdentifier: \.keybindingCategoryName,
             sortDescriptors: [],
             predicate: NSPredicate(format: "cluster == %@", cluster)
+        )
+        _emptyCategories = FetchRequest<Category>(
+            sortDescriptors: [SortDescriptor(\.name)],
+            predicate: NSCompoundPredicate(andPredicateWithSubpredicates: [
+                NSPredicate(format: "cluster == %@", cluster),
+                NSPredicate(format: "keybindings.@count == 0")
+            ])
         )
     }
     
@@ -69,19 +79,12 @@ struct ClusterDetailView: View {
             NavigationStack {
                 KeybindingCreateView(cluster: cluster, onAdd: { name, summary, category, keys in
                     addRecord(name: name, summary: summary, category: category, keys: keys)
-                    presentingAddKeybinding = false
                 }, onCancel: { presentingAddKeybinding = false })
             }
         }
         .sheet(isPresented: $presentingAddSection) {
             NavigationStack {
-                Text("Add Section Form")
-                    .navigationTitle("Add Section")
-                    .toolbar {
-                        Button(action: { addCategory() }) {
-                            Text("Add")
-                        }
-                    }
+                CategoryCreateView(onAdd: { name, summary in addCategory(name: name, summary: summary)}, onCancel: { presentingAddSection = false })
             }
         }
 
@@ -98,6 +101,12 @@ struct ClusterDetailView: View {
                         ForEach(section) { record in
                             KeybindingGridItem(keybinding: record)
                         }
+                    }
+                }
+                
+                ForEach(emptyCategories) { category in
+                    Section(header: gridHeader(category.wrappedName)) {
+                        Text("No Keybindings in this Category")
                     }
                 }
             }
@@ -142,27 +151,25 @@ struct ClusterDetailView: View {
         cluster.addToKeybindings(keybinding)
         
         do {
+            presentingAddKeybinding = false
             try viewContext.save()
-            count += 1
         } catch {
             // TODO: Handle Error with alert
             print(error.localizedDescription)
         }
     }
     
-    // TODO: Build New Category Form
-    func addCategory() {
-        let categories = ["Test", "Test2", "Test3", "Test4"]
+    func addCategory(name: String, summary: String) {
+        let category = Category(context: viewContext)
+        category.name = name
+        category.summary = summary
         
-        for category in categories {
-            let newCategory = Category(context: viewContext)
-            newCategory.name = category
-            cluster.addToCategories(newCategory)
-        }
+        cluster.addToCategories(category)
         
         do {
-            try viewContext.save()
             presentingAddSection = false
+            try viewContext.save()
+            
         } catch {
             // TODO: Handle Error with alert
             print(error.localizedDescription)

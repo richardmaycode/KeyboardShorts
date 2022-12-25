@@ -10,6 +10,7 @@
 		932A0266295791F1000AAD1E /* KeyCounterBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A0265295791F1000AAD1E /* KeyCounterBackground.swift */; };
 		932A026829579B88000AAD1E /* KeyCounterForeground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A026729579B88000AAD1E /* KeyCounterForeground.swift */; };
 		932A026A2957DDE6000AAD1E /* KeyCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A02692957DDE6000AAD1E /* KeyCounter.swift */; };
+		932A026D29588F0D000AAD1E /* CategoryCreateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932A026C29588F0D000AAD1E /* CategoryCreateView.swift */; };
 		933D0749294DFD3D00C43D54 /* Cluster+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0741294DFD3D00C43D54 /* Cluster+CoreDataClass.swift */; };
 		933D074A294DFD3D00C43D54 /* Cluster+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0742294DFD3D00C43D54 /* Cluster+CoreDataProperties.swift */; };
 		933D074B294DFD3D00C43D54 /* Key+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933D0743294DFD3D00C43D54 /* Key+CoreDataClass.swift */; };
@@ -49,6 +50,8 @@
 		932A0265295791F1000AAD1E /* KeyCounterBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCounterBackground.swift; sourceTree = "<group>"; };
 		932A026729579B88000AAD1E /* KeyCounterForeground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCounterForeground.swift; sourceTree = "<group>"; };
 		932A02692957DDE6000AAD1E /* KeyCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyCounter.swift; sourceTree = "<group>"; };
+		932A026C29588F0D000AAD1E /* CategoryCreateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCreateView.swift; sourceTree = "<group>"; };
+		932A026E29589752000AAD1E /* KeyboardShorts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "KeyboardShorts-Info.plist"; sourceTree = "<group>"; };
 		933D0741294DFD3D00C43D54 /* Cluster+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Cluster+CoreDataClass.swift"; path = "App/Models/Cluster+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		933D0742294DFD3D00C43D54 /* Cluster+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Cluster+CoreDataProperties.swift"; path = "App/Models/Cluster+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		933D0743294DFD3D00C43D54 /* Key+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Key+CoreDataClass.swift"; path = "App/Models/Key+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -110,6 +113,7 @@
 		934A373A2950EC6C003E7A0F /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				932A026C29588F0D000AAD1E /* CategoryCreateView.swift */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -157,6 +161,7 @@
 		93FBE452294CDB2D0064EC19 = {
 			isa = PBXGroup;
 			children = (
+				932A026E29589752000AAD1E /* KeyboardShorts-Info.plist */,
 				93FBE45D294CDB2E0064EC19 /* App */,
 				93FBE45C294CDB2E0064EC19 /* Products */,
 			);
@@ -355,6 +360,7 @@
 				93FBDB04294E21A1001D2A2C /* ClustersView.swift in Sources */,
 				93FBDB08294E28F6001D2A2C /* ClusterCreateView.swift in Sources */,
 				932A026A2957DDE6000AAD1E /* KeyCounter.swift in Sources */,
+				932A026D29588F0D000AAD1E /* CategoryCreateView.swift in Sources */,
 				934A373D2950ECA2003E7A0F /* KeybindingCreateView.swift in Sources */,
 				93FBE47B294CE3880064EC19 /* KSErrors.swift in Sources */,
 			);
@@ -490,6 +496,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KeyboardShorts-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -530,6 +537,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "KeyboardShorts-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
