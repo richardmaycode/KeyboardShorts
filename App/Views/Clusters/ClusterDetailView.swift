@@ -11,8 +11,9 @@ struct ClusterDetailView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    let cluster: Cluster
-    @State var count: Int = 1
+    @State var viewType: ViewType = .grid
+    @State var presentingAddKeybinding: Bool = false
+    @State var presentingAddSection: Bool = false
     
     @SectionedFetchRequest
     private var keybindings: SectionedFetchResults<String, Keybinding>
@@ -20,10 +21,7 @@ struct ClusterDetailView: View {
     @FetchRequest
     private var emptyCategories: FetchedResults<Category>
     
-    @State var viewType: ViewType = .grid
-    @State var presentingAddKeybinding: Bool = false
-    @State var presentingAddSection: Bool = false
-    
+    let cluster: Cluster
     let columns: [GridItem] = [GridItem(.adaptive(minimum: 300))]
     
     init(cluster: Cluster) {
@@ -42,12 +40,10 @@ struct ClusterDetailView: View {
         )
     }
     
-
-    
     var body: some View {
         VStack {
             if viewType == .grid {
-                grid // TODO: Update grid section headers to include number of bindings in section
+                grid
             } else {
                 list()
             }
@@ -71,9 +67,6 @@ struct ClusterDetailView: View {
                 }
                 .pickerStyle(.inline)
             }
-            
-            
-            
         }
         .sheet(isPresented: $presentingAddKeybinding) {
             NavigationStack {
@@ -87,17 +80,13 @@ struct ClusterDetailView: View {
                 CategoryCreateView(onAdd: { name, summary in addCategory(name: name, summary: summary)}, onCancel: { presentingAddSection = false })
             }
         }
-
-            
-
-        
     }
     
-    var grid: some View {
+    private var grid: some View {
         ScrollView{
             LazyVGrid(columns: columns, pinnedViews: [.sectionHeaders]) {
                 ForEach(keybindings) { section in
-                    Section(header: gridHeader(section.id)) {
+                    Section(header: gridHeader(section.id, count: 0)) { // FIXME: Add lookup for count of keybindings in category
                         ForEach(section) { record in
                             KeybindingGridItem(keybinding: record)
                         }
@@ -105,7 +94,7 @@ struct ClusterDetailView: View {
                 }
                 
                 ForEach(emptyCategories) { category in
-                    Section(header: gridHeader(category.wrappedName)) {
+                    Section(header: gridHeader(category.wrappedName, count: category.keybindings?.count ?? 0)) {
                         Text("No Keybindings in this Category")
                     }
                 }
@@ -114,11 +103,12 @@ struct ClusterDetailView: View {
     }
     
     @ViewBuilder
-    fileprivate func gridHeader(_ title: String) -> some View {
+    fileprivate func gridHeader(_ title: String, count: Int) -> some View {
         HStack {
             Text(title)
                 .font(.title)
             Spacer()
+            Text("\(count)")
         }
         .padding(10)
         .background(.thickMaterial)
@@ -135,7 +125,7 @@ struct ClusterDetailView: View {
         }
     }
     
-    func addRecord(name: String, summary: String, category: Category?, keys: [Key]) {
+    fileprivate func addRecord(name: String, summary: String, category: Category?, keys: [Key]) {
         let keybinding = Keybinding(context: viewContext)
         keybinding.name = name
         keybinding.summary = summary
@@ -159,7 +149,7 @@ struct ClusterDetailView: View {
         }
     }
     
-    func addCategory(name: String, summary: String) {
+    fileprivate func addCategory(name: String, summary: String) {
         let category = Category(context: viewContext)
         category.name = name
         category.summary = summary
