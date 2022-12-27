@@ -19,12 +19,23 @@ struct ClustersView: View {
     
     @Binding var selection: Panel?
     
+    var query: Binding<String> {
+        Binding {
+            searchText
+        } set: { newValue in
+            searchText = newValue
+            clusterResults.nsPredicate = newValue.isEmpty ? nil : NSPredicate(format: "name CONTAINS %@", newValue)
+        }
+    }
+    
     let columns: [GridItem] = [GridItem(.adaptive(minimum: 150))]
     
     var body: some View {
         VStack {
-            if clusterResults.isEmpty {
+            if clusterResults.isEmpty && searchText.isEmpty {
                 emptyResults
+            } else if(clusterResults.isEmpty) {
+                emptySearch
             } else {
                 switch viewType {
                 case .grid:
@@ -58,7 +69,7 @@ struct ClustersView: View {
             }, onCancel: { presentingNewCluster = false })
                 .embedInNavigationStack()
         }
-        .searchable(text: $searchText)
+        .searchable(text: query)
         .navigationDestination(for: Cluster.self) { cluster in
             ClusterDetailView(cluster: cluster)
         }
@@ -81,22 +92,21 @@ struct ClustersView: View {
     }
     
     var list: some View {
-        Text("Table")
-//        Table(clusterResults) {
-//            TableColumn("Name", value: \.wrappedName)
-//            TableColumn("Summary") { cluster in
-//                Text(cluster.summary ?? "")
-//            }
-//            TableColumn("Custom Cluster") { cluster in
-//                Text(cluster.isPersonal ? "Yes" : "No")
-//            }
-//            TableColumn("Created") { cluster in
-//                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
-//            }
-//            TableColumn("Modified") { cluster in
-//                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
-//            }
-//        }
+        Table(clusterResults) {
+            TableColumn("Name", value: \.wrappedName)
+            TableColumn("Summary") { cluster in
+                Text(cluster.summary ?? "")
+            }
+            TableColumn("Custom Cluster") { cluster in
+                Text(cluster.isPersonal ? "Yes" : "No")
+            }
+            TableColumn("Created") { cluster in
+                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
+            }
+            TableColumn("Modified") { cluster in
+                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
+            }
+        }
     }
     
     var emptyResults: some View {
@@ -128,6 +138,23 @@ struct ClustersView: View {
             }
         }
     }
+    
+    var emptySearch: some View {
+        VStack(spacing: 16) {
+            Image(systemName: KSSymbol.search)
+                .font(.system(size: 64))
+                .padding(.bottom, 5)
+            
+            Text("No Results")
+                .font(.largeTitle)
+            
+            Text("We couldn't find any clusters using with that name.")
+                .multilineTextAlignment(.center)
+                .lineLimit(2, reservesSpace: true)
+                .frame(maxWidth: 500)
+        }
+    }
+    
                            
     func createCluster(name: String, summary: String, isPersonal: Bool) {
         let cluster = Cluster(context: viewContext)

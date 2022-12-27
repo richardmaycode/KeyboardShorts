@@ -14,6 +14,7 @@ enum KSSymbol {
     static let keyboard: String = "keyboard"
     static let delete: String = "trash"
     static let edit: String = "pencil"
+    static let search: String = "magnifyingglass"
     
     static let gallery: String = "sparkles.rectangle.stack"
     static let all: String = "rectangle.on.rectangle.angled"
