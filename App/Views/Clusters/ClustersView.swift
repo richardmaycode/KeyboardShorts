@@ -11,7 +11,8 @@ struct ClustersView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(sortDescriptors: []) private var clusterResults: FetchedResults<Cluster>
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.isFavorite, order: .reverse),SortDescriptor(\.name)]) private var clusterResults: FetchedResults<Cluster>
+//    @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [SortDescriptor(\.name)]) private var clusters: SectionedFetchResults<Bool, Cluster>
     
     @State private var viewType: ViewType = .grid
     @State private var presentingNewCluster: Bool = false
@@ -32,10 +33,12 @@ struct ClustersView: View {
     
     var body: some View {
         VStack {
-            if clusterResults.isEmpty && searchText.isEmpty {
-                emptyResults
-            } else if(clusterResults.isEmpty) {
-                emptySearch
+            if clusterResults.isEmpty {
+                if !searchText.isEmpty {
+                    emptySearch
+                } else {
+                    emptyResults
+                }
             } else {
                 switch viewType {
                 case .grid:
@@ -67,7 +70,7 @@ struct ClustersView: View {
                 presentingNewCluster = false
                 createCluster(name: name, summary: summary, isPersonal: isPersonal)
             }, onCancel: { presentingNewCluster = false })
-                .embedInNavigationStack()
+            .embedInNavigationStack()
         }
         .searchable(text: query)
         .navigationDestination(for: Cluster.self) { cluster in
@@ -80,7 +83,7 @@ struct ClustersView: View {
             LazyVGrid(columns: columns) {
                 ForEach(clusterResults) { cluster in
                     NavigationLink(value: cluster) {
-                        ClusterGridItem(cluster: cluster)
+                        ClusterGridItem(cluster: cluster, onFavorite: { cluster in toggleFavorite(for: cluster)})
                     }
                     .buttonStyle(.plain)
                 }
@@ -92,21 +95,22 @@ struct ClustersView: View {
     }
     
     var list: some View {
-        Table(clusterResults) {
-            TableColumn("Name", value: \.wrappedName)
-            TableColumn("Summary") { cluster in
-                Text(cluster.summary ?? "")
-            }
-            TableColumn("Custom Cluster") { cluster in
-                Text(cluster.isPersonal ? "Yes" : "No")
-            }
-            TableColumn("Created") { cluster in
-                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
-            }
-            TableColumn("Modified") { cluster in
-                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
-            }
-        }
+        Text("Table") // FIXME: Fix complier error
+//        Table(clusterResults) {
+//            TableColumn("Name", value: \.wrappedName)
+//            TableColumn("Summary") { cluster in
+//                Text(cluster.summary ?? "")
+//            }
+//            TableColumn("Custom Cluster") { cluster in
+//                Text(cluster.isPersonal ? "Yes" : "No")
+//            }
+//            TableColumn("Created") { cluster in
+//                Text(cluster.wrappedCreated.formatted(date: .numeric, time: .shortened))
+//            }
+//            TableColumn("Modified") { cluster in
+//                Text(cluster.wrappedModified.formatted(date: .numeric, time: .shortened))
+//            }
+//        }
     }
     
     var emptyResults: some View {
@@ -122,7 +126,7 @@ struct ClustersView: View {
                 .multilineTextAlignment(.center)
                 .lineLimit(2, reservesSpace: true)
                 .frame(maxWidth: 500)
-                
+            
             
             HStack(spacing: 20) {
                 Button(action: { presentingNewCluster = true }) {
@@ -155,7 +159,16 @@ struct ClustersView: View {
         }
     }
     
-                           
+    func toggleFavorite(for cluster: Cluster) {
+        cluster.isFavorite = !cluster.isFavorite
+        
+        do {
+            try viewContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     func createCluster(name: String, summary: String, isPersonal: Bool) {
         let cluster = Cluster(context: viewContext)
         cluster.name = name

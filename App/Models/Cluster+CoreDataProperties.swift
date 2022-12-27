@@ -19,6 +19,7 @@ extension Cluster {
     @NSManaged public var created: Date?
     @NSManaged public var id: UUID?
     @NSManaged public var isPersonal: Bool
+    @NSManaged public var isFavorite: Bool
     @NSManaged public var modified: Date?
     @NSManaged public var name: String?
     @NSManaged public var summary: String?

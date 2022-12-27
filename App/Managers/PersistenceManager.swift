@@ -66,6 +66,7 @@ class PersistenceManager {
         let previewCluster = Cluster(context: Self.preview.viewContext)
         previewCluster.name = "Xcode Preview"
         previewCluster.summary = "Cluster provided for testing of views *DEVELOPMENT ONLY*"
+        previewCluster.isFavorite = true
         
         return previewCluster
     }
