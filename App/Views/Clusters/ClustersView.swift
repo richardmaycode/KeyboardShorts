@@ -12,7 +12,6 @@ struct ClustersView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.isFavorite, order: .reverse),SortDescriptor(\.name)]) private var clusterResults: FetchedResults<Cluster>
-//    @SectionedFetchRequest(sectionIdentifier: \.isFavorite, sortDescriptors: [SortDescriptor(\.name)]) private var clusters: SectionedFetchResults<Bool, Cluster>
     
     @State private var viewType: ViewType = .grid
     @State private var presentingNewCluster: Bool = false
@@ -165,6 +164,7 @@ struct ClustersView: View {
         do {
             try viewContext.save()
         } catch {
+            // TODO: Handle Error with Alert
             print(error.localizedDescription)
         }
     }
