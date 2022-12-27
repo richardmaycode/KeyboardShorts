@@ -27,7 +27,9 @@ struct KeyGroup: View {
         .padding()
         .background {
             Capsule()
-                .fill(Color(uiColor: .quaternarySystemFill))
+            #if os(iOS)
+                .fill(Color(uiColor: .quaternarySystemFill)) // FIXME: Add color for MacOS
+            #endif
                 .frame(width: CGFloat(keys.count * 250 - (keys.count * 125)))
                 
         }

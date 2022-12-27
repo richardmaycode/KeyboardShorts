@@ -40,7 +40,9 @@ struct KeyCounterBackground: View {
                     path.addArc(center: center, radius: radius, startAngle: startAngle(for: segment), endAngle: endAngle(for: segment), clockwise: false)
                 }
                 .stroke(style: StrokeStyle(lineWidth: 5,lineCap: .round))
-                .fill(colorScheme == .dark ? Color(uiColor: .tertiarySystemBackground) : .secondary)
+                #if os(iOS)
+                .fill(colorScheme == .dark ? Color(uiColor: .tertiarySystemBackground) : .secondary) // FIXME: Add color for MacOS
+                #endif
             }
         }
         .padding(.horizontal, 30)

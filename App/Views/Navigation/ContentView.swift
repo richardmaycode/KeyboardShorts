@@ -19,6 +19,11 @@ struct ContentView: View {
                 DetailView(selection: $selection)
             }
         }
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                selection = .all
+            }
+        }
 
     }
 }

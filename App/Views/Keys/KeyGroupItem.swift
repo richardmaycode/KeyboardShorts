@@ -26,7 +26,9 @@ struct KeyGroupItem: View {
         .padding()
         .background {
             Circle()
-                .fill(Color(uiColor: .quaternarySystemFill))
+            #if os(iOS)
+                .fill(Color(uiColor: .quaternarySystemFill)) // FIXME: Add color for MacOS
+            #endif
 
         }
         .padding(5)
